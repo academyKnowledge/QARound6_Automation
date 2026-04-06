@@ -9,6 +9,5 @@ describe('Selectors in Telerik', () => {
         cy.get("[alt=Google-play-icon]")
         cy.get(".TK-Footer-List-Social").first().children()
         cy.get(".TK-Footer-List-Social").first().find("*").filter("li") 
-        // test
     });
 });
