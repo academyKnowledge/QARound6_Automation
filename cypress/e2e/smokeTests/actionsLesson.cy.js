@@ -1,14 +1,15 @@
 /// <reference types="cypress"/>
 describe('Actions Lesson', () => {
+    beforeEach(()=>{
+        cy.visit('http://127.0.0.1:5500/actionsLesson.html')
+    })
     it('Click command', () => {
-        cy.visit('http://127.0.0.1:5500/actionsLesson.html');
         cy.get("#btn1").click()
         cy.get("#btn2").click("top")
         cy.get(".btn").click({multiple:true})
         cy.get("#btn0").click({force:true})
     });
     it('type command', () => {
-        cy.visit('http://127.0.0.1:5500/actionsLesson.html');
         cy.get("[placeholder='Type your name']").type("Razan{home}{del}")
         cy.get("[name=input_0]").type("test",{force:true,delay:1000})
         cy.get("#myTextField").type("{pageDown}")
@@ -22,8 +23,7 @@ describe('Actions Lesson', () => {
         cy.get("#password").type("secret_sauce{enter}")
     });
 
-    it.only('select command', () => {
-        cy.visit("http://127.0.0.1:5500/actionsLesson.html")
+    it('select command', () => {
         cy.get("#country").select("Jordan") // select by visible text 
         cy.get("#country").select("egypt_country") // select by value 
         cy.get("#country").select(0) // select by index 
@@ -31,7 +31,6 @@ describe('Actions Lesson', () => {
     });
 
     it('check and uncheck commands', () => {
-        cy.visit("http://127.0.0.1:5500/actionsLesson.html")
         cy.get("#Banana").check()
         cy.get("[name=snack4]").check().uncheck()
         cy.get("#Banana").uncheck()
@@ -44,13 +43,11 @@ describe('Actions Lesson', () => {
     });
 
     it('focus and blur commands', () => {
-        cy.visit("http://127.0.0.1:5500/actionsLesson.html")
         cy.get("#myTextField").focus().blur()
 
     });
 
     it('trigger elements command', () => {
-        cy.visit("http://127.0.0.1:5500/actionsLesson.html")
         cy.get("#trigger_btn").trigger("mouseover")
         cy.pause()
         cy.get("#trigger_btn").trigger("mouseleave")
@@ -58,7 +55,6 @@ describe('Actions Lesson', () => {
     });
 
     it('double click command', () => {
-        cy.visit("http://127.0.0.1:5500/actionsLesson.html")
         cy.get("#dbClick").dblclick()
     });
 });
