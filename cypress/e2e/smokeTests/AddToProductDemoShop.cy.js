@@ -3,10 +3,10 @@ describe('Add product to cart', () => {
   
     before(()=>{
         // run the code once before all test cases
-        cy.visit("https://demowebshop.tricentis.com/login")
-        cy.get("#Email").type("eng.razanbalatiah96@gmail.com")
-        cy.get("#Password").type("test@123")
-        cy.get(".login-button").click()
+        // cy.fixture("UserDemoWebShop").then((data)=>{
+           cy.loginToDemoWebShop()
+        // })
+       
     })
 
     // beforeEach(()=>{
@@ -30,5 +30,22 @@ describe('Add product to cart', () => {
         
     // });
 
+    after(()=>{
+     // run once after finish execute all test cases 
+    cy.get('.ico-cart').first().click()
+     cy.get('[name=removefromcart]').check()
+     cy.get('.update-cart-button').click()
+
+    // cy.get('[name=removefromcart]').invoke('val').then((value)=>{
+    //     cy.log(value)
+    //     // cy.request({method: 'POST', url:'https://demowebshop.tricentis.com/cart',form: true, body:{removefromcart:value , itemquantity:1}})
+    // })
+    })
+
+    //6595121
+
+    afterEach(()=>{
+    // run after finish execute each test case 
+    })
 
 });

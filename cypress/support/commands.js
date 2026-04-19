@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("loginToDemoWebShop", () => { 
+    cy.fixture("UserDemoWebShop").then((data)=>{
+        cy.visit("https://demowebshop.tricentis.com/login")
+        cy.get("#Email").type(data.email)
+        cy.get("#Password").type(data.password)
+        cy.get(".login-button").click()
+    })
+})
+
+
