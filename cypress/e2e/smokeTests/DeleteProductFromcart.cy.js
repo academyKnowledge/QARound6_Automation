@@ -4,7 +4,12 @@ describe('Delete product from cart', () => {
             // login
            cy.loginToDemoWebShop()
            // add product to cart
-           cy.request('POST','https://demowebshop.tricentis.com/addproducttocart/catalog/13/1/1')  
+           cy.request('POST','https://demowebshop.tricentis.com/addproducttocart/catalog/13/1/1') 
+        //    cy.screenshot({capture:"fullPage"}) 
+        //    cy.screenshot({capture:"viewport"}) 
+            // cy.screenshot({capture:"runner"}) 
+
+
         })
 
         it('Validate that the user can delete a product from the cart', () => {

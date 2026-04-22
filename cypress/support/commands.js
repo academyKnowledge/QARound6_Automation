@@ -32,5 +32,3 @@ Cypress.Commands.add("loginToDemoWebShop", () => {
         cy.get(".login-button").click()
     })
 })
-
-

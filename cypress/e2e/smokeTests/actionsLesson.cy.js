@@ -17,11 +17,13 @@ describe('Actions Lesson', () => {
         cy.get("#testField").type("{pageUp}")
     });
 
-    it('enter seq', () => {
-        cy.visit("/")
-        cy.get("[data-test=username]").type("standard_user")
-        cy.get("#password").type("secret_sauce{enter}")
-    });
+    // it.only('enter seq', () => {
+    //     cy.origin('https://www.saucedemo.com/',()=>{
+    //     cy.get("[data-test=username]").type("standard_user")
+    //     cy.get("#password").type("secret_sauce{enter}")
+    //     })
+
+    // });
 
     it('select command', () => {
         cy.get("#country").select("Jordan") // select by visible text 
