@@ -27,7 +27,6 @@ describe('Practices', () => {
         cy.get("label[for=Email]").should("be.visible")
         cy.get("label[for=Password]").should("be.visible")
         cy.get("label[for=ConfirmPassword]").should("be.visible")
-
         cy.get("#FirstName").should("be.visible")
         cy.get("#LastName").should("be.visible")
         cy.get("#Email").should("be.visible")

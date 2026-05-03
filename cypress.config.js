@@ -1,16 +1,25 @@
-const { defineConfig } = require("cypress");
-const fs = require('fs-extra');
+import { defineConfig } from "cypress";
+import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
+import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
+import createEsbuildPlugin from "@badeball/cypress-cucumber-preprocessor/esbuild";
 
-module.exports = defineConfig({
-  allowCypressEnv: false,
-
+export default defineConfig({
   e2e: {
-    setupNodeEvents(on, config) {
-       on('before:run', async () => {
-        await fs.remove('cypress/QAReport');
-      });
+    specPattern: "cypress/e2e/**/*.feature",
+    async setupNodeEvents(on, config) {
+      // Add cucumber plugin
+      await addCucumberPreprocessorPlugin(on, config);
+      // Use esbuild bundler
+      on(
+        "file:preprocessor",
+        createBundler({
+          plugins: [createEsbuildPlugin(config)],
+        })
+      );
+
+      return config;
     },
-    baseUrl:"https://www.saucedemo.com/",
+     baseUrl:"https://www.saucedemo.com/",
     // viewportWidth: 440,
     // viewportHeight:400,
     // watchForFileChanges:false,
@@ -28,4 +37,6 @@ module.exports = defineConfig({
         json: false,
         timestamp: "mmddyyyy_HHMMss"
       },   
-}});
+ 
+  },
+});

@@ -1,4 +1,4 @@
-describe('', () => {
+describe('',() => {
     it('js', () => {
 
         let x = 5 ; 
@@ -25,15 +25,14 @@ describe('', () => {
     it.only('for', () => {
         let A1 = [1,3,5,7,9]
         // A1.length = 5
-        for (let i = (A1.length - 1 ); i >= 0 ; i--) {
+        for(let i = (A1.length - 1 ); i >= 0 ; i--) {
           cy.log(A1[i]+=3)
         }
         cy.log("---------")
         // A1 [4,6,8,10,12]
 
-        for (let i = 0; i < A1.length; i++) {
+        for(let i = 0; i < A1.length; i++) {
           cy.log(A1[i]+=3)
-            
         }
 
         // A1[7,9,11,13,15]
